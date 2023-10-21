@@ -61,7 +61,10 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
      * Create your hippo objects here. The "left" input parameter indicates
      * which side the hippo is drawn.
      */
-    Hippo myHippoObject = new Hippo("left");
+    Hippo leftHippo = new Hippo("left", "Harry Hippo", Color.PINK);
+    Hippo rightHippo = new Hippo("right", "Henry Hippo", Color.YELLOW);
+    Hippo upHippo = new Hippo("up", "Homer Hippo", Color.GREEN);
+    Hippo downHippo = new Hippo("down", "Lizzie Hippo", Color.ORANGE);
 
     public HungryHungryHippos() {
         gameFrame.setScene(this);
@@ -69,7 +72,7 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         gameFrame.setSize(GAME_WIDTH, GAME_HEIGHT);
         setup();
         
-        String instructions = "Press '1' to make the hippo eat\n";
+        String instructions = "Press keys '1', '2', '3' and '4' to make the hippos eat\n";
         instructions += "Press 's' to start";
         JOptionPane.showMessageDialog(null, instructions);
     }
@@ -96,7 +99,11 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         /*
          * Draw all the hippos here
          */
-        myHippoObject.draw(g);
+        leftHippo.draw(g);
+        rightHippo.draw(g);
+        upHippo.draw(g);
+        downHippo.draw(g);
+        
         
         if (startGame) {
             /*
@@ -109,7 +116,11 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
              * checkHippoEating(myHippoObject) method. Make sure to do
              * this for all of your hippos!
              */
-            checkHippoEating(myHippoObject);
+            checkHippoEating(leftHippo);
+            checkHippoEating(rightHippo);
+            checkHippoEating(upHippo);
+            checkHippoEating(downHippo);
+            
         }
     }
 
@@ -123,13 +134,13 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         if (keyCode == KeyEvent.VK_S) {
             startGame = true;
         } else if (keyCode == KeyEvent.VK_1) {
-            myHippoObject.eat();
+            leftHippo.eat();
         } else if (keyCode == KeyEvent.VK_2) {
-            
+            rightHippo.eat();
         } else if (keyCode == KeyEvent.VK_3) {
-            
+            upHippo.eat();
         } else if (keyCode == KeyEvent.VK_4) {
-            
+        	downHippo.eat();
         }
     }
     

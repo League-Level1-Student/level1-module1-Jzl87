@@ -66,17 +66,30 @@ public class SolarSystem implements GameControlScene {
     Long startTimeMs = null;
     Game gameFrame = new Game("Solar System");
     
-    Planet earth = new Planet(12);
+    
+    Planet mercury = new Planet(4,Color.GRAY, 57, 88);
+    Planet venus = new Planet (12,Color.ORANGE, 108,224);
+    Planet earth = new Planet(12, Color.BLUE, 149, 365);
+    Planet mars = new Planet(6, Color.RED, 227, 687);
+    Planet jupiter = new Planet(142, Color.BLUE, 300, 4331);
+    Planet saturn = new Planet(120, Color.ORANGE, 350, 10747 );
+    Planet uranus = new Planet(51,Color.BLUE,400, 30589);
+    Planet neptune = new Planet(49, Color.BLUE ,450, 59800);
+    
+    
     
     public SolarSystem() {
         gameFrame.setScene(this);
         gameFrame.start();
         gameFrame.setSize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
         
+        
+        
         /*
          * Add Earth's moon
          */
         earth.addMoon();
+        mars.addMoon();
         
         sunX = CENTER_X - SUN_RADIUS_PIXELS;
         sunY = CENTER_Y - SUN_RADIUS_PIXELS;
@@ -96,6 +109,7 @@ public class SolarSystem implements GameControlScene {
         /*
          * Space
          */
+    	
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT);
         
@@ -117,7 +131,14 @@ public class SolarSystem implements GameControlScene {
         /*
          * Add planets here
          */
+        mercury.draw(g, numDays);
+        venus.draw(g, numDays);
         earth.draw(g, numDays);
+        mars.draw(g, numDays);
+        jupiter.draw(g, numDays);
+        saturn.draw(g, numDays);
+        uranus.draw(g, numDays);
+        neptune.draw(g, numDays);
     }
     
     @Override
